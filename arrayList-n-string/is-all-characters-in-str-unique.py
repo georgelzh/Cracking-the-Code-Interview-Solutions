@@ -21,4 +21,4 @@ def isUniqueChars(str) -> bool:
 	return True
 
 
-isUniqueChars("test")
+isUniqueChars("hello world")
