@@ -4,7 +4,6 @@ a permutation of a palin­ drome. A palindrome is a word or phrase that is the
 same forwards and backwards. A permutation is a rearrangement of letters. 
 The palindrome does not need to be limited to just dictionary words.
 
-Brute Force method
 """
 
 def is_palindrome_permutation(str):
@@ -25,19 +24,20 @@ def is_palindrome_permutation(str):
 			continue
 		else:
 			occured_once_char_counter += 1
+	# return false whenever there is more then one char occured just once,
 	if occured_once_char_counter > 1:
 		return False
 
+	# compute all permutations, and remove those that are not palindrome
 	arr = compute_permutation("", str, arr)
 	for i in range(len(arr)):
-		if not is_palindrme(arr[i - removed_str_counter]):
+		if not is_palindrome(arr[i - removed_str_counter]):
 			arr.remove(arr[i - removed_str_counter])
 			removed_str_counter += 1
 
 	if len(arr) > 0:
-		print("True, (permutation: {0})".format(arr))
+		print("True, Permutation: {0}".format(arr))
 		return True
-
 
 
 
@@ -54,7 +54,7 @@ def compute_permutation(prefix, remains, arr):
 	return arr
 
 
-def is_palindrme(str):
+def is_palindrome(str):
 	# reverse the str and compare
 	if str == str[::-1]:
 		print("yes")
