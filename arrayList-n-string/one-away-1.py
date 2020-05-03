@@ -8,6 +8,8 @@ pales, pale -> true
 pale, bale -> true
 pale, bake -> false
 
+Runtime is O(n) - here n means the shortest str length
+
 Solution
 This is one of those problems where it's helpful to think about the "meaning" of each of these 
 operations. What does it mean for two strings to be one insertion, replacement, or removal away 
@@ -106,4 +108,16 @@ if __name__ == "__main__":
 """
 unittest reference: https://docs.python.org/2/library/unittest.html
 github code: https://github.com/careercup/CtCI-6th-Edition-Python/blob/master/Chapter1/5_One%20Away/OneAway.py
+
+-Alternative solutions is to merge two main functions. 
+We might notice that the code for oneEditReplace is very simtlar to that for oneEditinsert. We can merge them 
+into one method.
+To do this, observe that both methods follow similar logic: compare each character and ensure that the strings 
+are only different by one. The methods vary in how they handle that difference. The method oneEditReplace 
+doesnothing other than flag the difference, whereas oneEditinsert increments the pointer to the longer string. 
+We can handle both of these in the same method.
+Some people might argue the first approach is better, as it is clearer and easier to follow. Others, however, 
+will argue that the second approach is better, since it's more compact and doesn't duplicate code (which can 
+facilitate maintainability).
+You don't necessarily need to "pick a side:'You can discuss the tradeoffs with your interviewer.
 """
