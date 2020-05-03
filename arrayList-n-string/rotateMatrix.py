@@ -3,6 +3,8 @@ Rotate Matrix: Given an image represented by an NxN matrix, where each pixel in 
 image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
 Hints:#51, #100
 
+This algorithm is O(N^2), which is the best we can do since any algorithm must touch all N2 elements.
+
 under this condition, the algorithm fails to check whether its a n*n matrix
 arr = [
 		["1"],
