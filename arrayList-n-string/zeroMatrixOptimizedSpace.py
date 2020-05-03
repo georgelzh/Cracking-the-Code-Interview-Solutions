@@ -6,6 +6,10 @@ Hints:#17, #74, #702
 use first row and columns to store zero values of its row and column for zeroing.
 uses only O(1) space
 
+This code has a lot of "do this for the rows, then the equivalent action for the 
+column:' In an interview, you could abbreviate this code by adding comments and 
+TODOs that explain that the next chunk of code looks the same as the earlier code, 
+but using rows. This would allow you to focus on the most important parts of the algorithm.
 """
 
 def ZeroMatrix(matrix):
