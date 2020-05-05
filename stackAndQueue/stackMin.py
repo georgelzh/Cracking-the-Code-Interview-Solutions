@@ -1,16 +1,15 @@
 """
-One case where stacks are often useful is in certain recursive algorithms. 
-Sometimes you need to push temporary data onto a stack as you recurse, but 
-then remove them as you backtrack (for example, because the recursive check 
-failed). A stack offers an intuitive way to do this.
-A stack can also be used to implement a recursive algorithm iteratively. 
-(This is a good exercise! Take a simple recursive algorithm and implement 
-it iteratively.)
+Stack Min: How would you design a stack which, in addition to push and pop, 
+has a function min which returns the minimum element? Push, pop and min 
+should all operate in 0(1) time.
+Hints:#27, #59, #78
 
-the code in the book used next at the top node to store previous node.
-in that case, prev is no longer needed
+Used a stack to store all the min values. and pop and push as it got deleted or 
+new min shows up.
+
+StackMin's super class is Stack, it added new functions handle min element on the stack
 """
-from collections import deque
+# from collections import deque could be used as a stack, optional
 
 class Node:
 	def __init__(self, value, next=None, prev=None):
