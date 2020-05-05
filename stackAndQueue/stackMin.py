@@ -10,6 +10,7 @@ it iteratively.)
 the code in the book used next at the top node to store previous node.
 in that case, prev is no longer needed
 """
+from collections import deque
 
 class Node:
 	def __init__(self, value, next=None, prev=None):
@@ -25,23 +26,23 @@ class Stack:
 	def push(self, value):
 		if self.top is None:
 			self.top = Node(value)
-			print(self.top.value)
+			# print("min: ", self.top.value)
 		elif self.top is not None:
 			temp = self.top
 			self.top.next = Node(value)
 			self.top = self.top.next
 			self.top.prev = temp
-			print(self.top.value)
+			# print("min: ", self.top.value)
 
 	def pop(self):
 		if self.top is None:
 			return
 		if self.top.prev is None:
-			print(self.top.value)
+			# print(self.top.value)
 			self.top = None
 			return
 		else:
-			print(self.top.value)
+			# print(self.top.value)
 			self.top = self.top.prev
 			self.top.next = None
 
@@ -50,11 +51,10 @@ class Stack:
 		if self.top is None:
 			return
 		else:
-			print(self.top.value)
 			return self.top.value
 	
 	def isEmpty(self):
-		return self.top is None
+		return self.top == None
 
 	def __str__(self):
 		arr = []
@@ -65,14 +65,59 @@ class Stack:
 		return ' <- '.join(arr)
 
 
+class StackMin(Stack):
+	def __init__(self):
+		Stack.__init__(self)
+		self.mins = Stack()
+		self.top = None
+
+	def push(self, value):
+		if self.top is None:
+			self.mins.push(value)
+			self.top = Node(value)
+
+			print("first node: ", self.top.value)
+		else:
+			if (value <= self.getMin()):
+				self.mins.push(value)
+
+			temp = self.top
+			self.top.next = Node(value)
+			self.top = self.top.next
+			self.top.prev = temp
+			print("new node: ", self.top.value)
+
+	def pop(self):
+		if self.top is None:
+			return "Empty Stack"
+		if self.top.prev is None:
+			print(self.top.value)
+			self.mins.pop()
+			self.top = None
+			return
+		else:
+			print(self.top.value)
+			self.mins.pop()
+			self.top = self.top.prev
+			self.top.next = None
+
+	def getMin(self):
+		return self.mins.peek()
+
+
 
 # main
 if __name__ == "__main__":
-	s = Stack()
-	s.isEmpty()
-	s.push(1)
+	s = StackMin()
+	s.push(99)
+	s.push(78)
+	s.push(67)
+	print(s.getMin())
 	s.push(2)
-	s.push(3)
+	print(s.getMin())
 
-	print(s)
 
+"""
+override __init__ python: https://help.semmle.com/wiki/display/PYTHON/__init__+method+calls+overridden+method
+https://www.geeksforgeeks.org/extend-class-method-in-python/
+"""

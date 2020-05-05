@@ -6,41 +6,41 @@ Fixed Division
 """
 
 class ThreeStack:
-	def __init__(self, stackSize=None):
+	def __init__(self, stackCapacity=None):
 		self.numberOfStack = 3
-		self.stackSize = int(stackSize)
-		self.arr = [0] * (self.stackSize * self.numberOfStack)
-		self.elementOnStack = [0] * self.numberOfStack
+		self.stackCapacity = int(stackCapacity)
+		self.arr = [0] * (self.stackCapacity * self.numberOfStack)
+		self.size = [0] * self.numberOfStack
 
 
 	def push(self, stackNum, value):
 		if self.isFull(stackNum):
 			print("stack is full")
 		else:
-			# print(self.getTopOfStack(stackNum))
-			self.arr[self.getTopOfStack(stackNum)] = value
-			self.elementOnStack[stackNum] += 1
+			# print(self.getElementNumOnStack(stackNum))
+			self.arr[self.getElementNumOnStack(stackNum)] = value
+			self.size[stackNum] += 1
 
 	def pop(self, stackNum):
-		if self.getTopOfStack(stackNum) == 0:
+		if self.getElementNumOnStack(stackNum) == 0:
 			print("stack is empty")
 		else:
-			self.arr[self.getTopOfStack(stackNum)-1] = 0
-			self.elementOnStack[stackNum] -= 1
+			self.arr[self.getElementNumOnStack(stackNum)-1] = 0
+			self.size[stackNum] -= 1
 
 	def peek(self, stackNum):
-		print(self.arr[self.getTopOfStack(stackNum)-1])
+		print(self.arr[self.getElementNumOnStack(stackNum)-1])
 
 	def isFull(self, stackNum):
-		return self.elementOnStack[stackNum] == self.stackSize
+		return self.size[stackNum] == self.stackCapacity
 
-	def getTopOfStack(self, stackNum):
-		return stackNum * self.stackSize + self.elementOnStack[stackNum]
+	def getElementNumOnStack(self, stackNum):
+		return stackNum * self.stackCapacity + self.size[stackNum]
 
 
 	def __str__(self):
 		arr = []
-		for i in range(self.numberOfStack * self.stackSize):
+		for i in range(self.numberOfStack * self.stackCapacity):
 			arr.append(str(self.arr[i]))
 		return ' - '.join(arr)
 
@@ -60,3 +60,10 @@ if __name__ == "__main__":
 	t.peek(2)
 	t.peek(1)
 
+
+"""
+If we had additional information about the expected usages of the stacks, 
+then we could modify this algo­rithm accordingly.For example,if we expected 
+Stack1 to have many more elements than Stack2,we could allocate more space to 
+Stack 1 and lessspace to Stack 2.
+"""
