@@ -8,6 +8,10 @@ Used a stack to store all the min values. and pop and push as it got deleted or
 new min shows up.
 
 StackMin's super class is Stack, it added new functions handle min element on the stack
+
+could also use a Node to form a stack inside the class to keep track of the mins.
+special notice is that every new min node should points back to the previous mins.
+when you pop, you can just move to the prev node.
 """
 # from collections import deque could be used as a stack, optional
 
