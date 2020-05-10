@@ -29,6 +29,8 @@ print(H)
 
 """
 Removing from heap
+This algorithm will also take 0( log(base 2)n) time.
+
 You can remove the element at first index by using this function.
 In the below example the function will always remove the element
 at the index position 0.
@@ -48,6 +50,8 @@ print(H)
 
 """
 Replacing in a Heap
+This algorithm will also take 0( log(base 2)n) time.
+
 The heapreplace function always removes the smallest element
 of the heap and inserts the new incoming element at some
 place not fixed by any order.
