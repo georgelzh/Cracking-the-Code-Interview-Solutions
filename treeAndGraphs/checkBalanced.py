@@ -3,8 +3,11 @@
 this question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any
 node never differ by more than one.
 
-solution one:
-This has O(N) time
+
+Brute Force Solution:
+This has O(N * Log(base2)N) time, because Nodes might be touched multiple times for the purpose of counting
+each node's height.
+
 and O(height) space
 """
 
@@ -38,8 +41,10 @@ class Node:
             if self.right != None:
                 self.right.printTree()
 
+
 def checkBalanced(root):
     if root == None:
+        # print("haha"), for understanding return value purpose
         return True
     else:
         leftHeight = getHeight(root.left)
@@ -47,19 +52,27 @@ def checkBalanced(root):
         if abs(leftHeight - rightHeight) > 1:
             return False
         else:
-            return checkBalanced(root.left) and checkBalanced(root.right)
-            # return True is wrong, I should use recursive function here.
-            # return max(leftHeight, rightHeight) + 1 this line is my mistake,
-            # keeps in mind that I will need an extra function that help me get
-            # the height of the root. the logic of returning it's balanced or not,
-            # and returning the height of a node's all subnodes would not work well
-
+            leftResult = checkBalanced(root.left)
+            rightResult = checkBalanced(root.right)
+            # print("leftResult: ", leftResult, " rightResult: ", rightResult)      for understanding return value purpose
+            # print("left and right Result: "rightResult and rightResult)           for understanding return value purpose
+            return leftResult and rightResult
+            """
+            why here return checkBalanced(root.left) and checkBalanced(root.right)
+            will return True if both sides are balanced? None of my function here says
+            it will return True. Where does the True come from
+            return True is wrong, I should use recursive function here like the line above
+            return max(leftHeight, rightHeight) + 1, this line is my mistake,
+            keeps in mind that I will need an extra function that help me get
+            the height of the root.
+            of course, Or I can try to return a tuple such as (a, b)
+            """
 
 def getHeight(root):
     if root is None:
         return -1
     else:
-        # return the max height of the root
+        # return the max height of the root by using recursion
         output = max([getHeight(root.left), getHeight(root.right)]) + 1
         return output
 
@@ -73,4 +86,5 @@ if __name__ == "__main__":
     root.insert(13)
     root.insert(16)
 
-    checkBalanced(root)
+    assert checkBalanced(Node()) == True, "faled"
+    assert checkBalanced(root) == True, "faled"
