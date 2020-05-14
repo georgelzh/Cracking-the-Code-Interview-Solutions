@@ -3,9 +3,11 @@
 this question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any
 node never differ by more than one.
 
+-------------
 O(N) time
 O(H) space
 
+---------------
 We need to cut out some of the calls to getHeight.
 If we inspect this method, we may notice that getHeight could actually check if the tree is balanced at
 the same time as it's checking heights. What do we do when we discover that the subtree isn' t balanced?
