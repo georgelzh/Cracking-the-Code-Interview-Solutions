@@ -5,6 +5,8 @@ its parent.
 
 Hints: #79, #91
 
+reference: https://www.geeksforgeeks.org/inorder-successor-in-binary-search-tree/
+
 1. handle root node and none.
 2. if node.right exists, traverse to the leftmost node of its subtree then return, if no subtree. just return.
 3. if node.right does not exist, then traverse back to parent until the curr.value > than the (input) node.value
