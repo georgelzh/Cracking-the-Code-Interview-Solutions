@@ -40,7 +40,7 @@ def get_in_order_successor(node, value):
         curr.value = curr.value
     # when we reach root node and root.value < value, return None
     if curr.parent == None and curr.value < value:
-        return None
+        return curr.value
     # else return the successor
     return curr.value
     
