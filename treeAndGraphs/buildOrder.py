@@ -31,6 +31,8 @@ Repeat until toBeProcessed is at the end of the buildOrder:
 » Decrement child. dependencies (the number of incoming edges).
 » If child. dependencies is zero, add child to end of buildOrder.
 3. Increment toBeProcessed.
+
+O(P+D) number of projects + number of dependencies
 """
 
 def find_projects_build_order(project_name_list, dependency_list):
