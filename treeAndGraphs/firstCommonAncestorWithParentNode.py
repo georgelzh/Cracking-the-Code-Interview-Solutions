@@ -97,3 +97,8 @@ class TestFindAncestor(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+"""
+python ternary operator
+https://en.wikipedia.org/wiki/%3F:#Python
+"""
