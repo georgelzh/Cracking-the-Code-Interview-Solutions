@@ -40,14 +40,6 @@ class BinaryNode:
             res = res + self.inorderTraversal(root.right)
         return res
 
-    def inorderTraversal(self,root):
-        output = []
-        if root:
-            output = self.inorderTraversal(root.left)
-            output.append(root.data)
-            output = output + self.inorderTraversal(root.right)
-        return output
-
     """
     # pre-order: visit current, left, then right
     def printTree(self):
