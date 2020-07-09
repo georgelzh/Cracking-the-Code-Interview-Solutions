@@ -6,7 +6,7 @@ A tree T2 is a subtree of Tl if there exists a node n in Tl such that the subtre
 That is, if you cut off the tree at node n, the two trees would be identical.
 Hints:#4, #11, #18, #31, #37
 
-my own solution
+my own solution + hint #31
 O(T1 + T2)
 """
 import unittest
@@ -44,10 +44,14 @@ def pre_traverse(root):
         # traverse to the left
         if root.left != None:
             val_list.extend(pre_traverse(root.left))
+        elif root.left == None:
+            val_list.append("None")
 
         # to the right
         if root.right != None:
             val_list.extend(pre_traverse(root.right))
+        elif root.right == None:
+            val_list.append("None")
     return val_list
 
 def check_subtree(t1, t2):
@@ -99,8 +103,9 @@ class Test(unittest.TestCase):
         root.insert(300)
         root.insert(400)
         root.insert(5)
-        pre_traverse_output = [100, 50, 25, 5, 70, 200, 150, 300, 400]
+        pre_traverse_output = [100, 50, 25, 5, "None", "None", "None", 70, "None", "None", 200, 150, "None", "None",  300, "None", 400, "None", "None"]
         real_output = pre_traverse(root)
+        print(pre_traverse_output)
         print(real_output)
         self.assertEqual(real_output, pre_traverse_output)
         self.assertEqual(check_subtree(root, root.right), True)
