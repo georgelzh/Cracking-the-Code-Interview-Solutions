@@ -106,7 +106,7 @@ class Node:
                     self.right = Node(val)
                 else:
                     self.right.insert(val)
-            elif val < self.val:
+            elif val <= self.val:
                 if self.left == None:
                     self.left = Node(val)
                 else:
