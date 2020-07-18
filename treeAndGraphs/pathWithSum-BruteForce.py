@@ -16,6 +16,26 @@ The runtime is O(N log N)
 
 """
 
+# random binary tree class
+class Node:
+    def __init__(self, value=None):
+        self.value = value
+        self.left = None
+        self.right = None
+    
+    def insert(self, value):
+        if self.value != None:
+            if self.left == None:
+                self.left = Node(value)
+            elif self.right == None:
+                self.right = Node(value)
+            elif self.left != None and self.right != None:
+                if self.left.left != None and self.left.right != None:
+                    self.right.insert(value)
+                else:
+                    self.left.insert(value)
+
+
 def countPathWithSum(root, targetSum):
     if root == None:
         return 0
@@ -29,6 +49,35 @@ def countPathWithSum(root, targetSum):
     
     return pathsFromRoot + pathOnLeft + pathOnRight
 
-# Returns the number of paths with this sum starting from this node.
 
 def countPathWithSumFromNode(node, targetSum, currentSum):
+# Returns the number of paths with this sum starting from this node.
+    if node == None:
+        return 0
+    currentSum += node.value
+
+    # check if current value matches target sum
+    totalPaths = 0
+    if currentSum == targetSum:
+        totalPaths += 1
+    
+    # traverse to the children and count all the total path
+    totalPaths += countPathWithSumFromNode(node.left, targetSum, currentSum)
+    totalPaths += countPathWithSumFromNode(node.right, targetSum, currentSum)
+    return totalPaths
+
+if __name__ == "__main__":
+    root = Node(10)
+    root.insert(10)
+    root.insert(-10)
+    root.insert(-10)
+    root.insert(0)
+    root.insert(10)
+
+    sum = countPathWithSum(root, 10)
+    print(sum)  #6
+
+
+"""
+bruce force solution from cracking the code interview
+"""
