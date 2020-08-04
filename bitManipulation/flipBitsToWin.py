@@ -8,6 +8,8 @@ EXAMPLE
 input: 1775 (or: 11011101111)
 output: 8
 
+Hints: #159, #226, #31 4, #352
+
 run time: O(b)
 memory O(b)
 """
@@ -30,7 +32,10 @@ def get_sequence(num):
             searchFor = num & 1
             # reset the counter
             counter = 0
-        counter += 1
+        # important steps that made sure that that whenever the bit was flipped,
+        # the coming bit will be gone bc it will be shifted, so the counter +=1 made sure
+        # that bit was also counted!!
+        counter += 1    
         # shift the num to the left by 1 so that we can process next bit
         num >>= 1
         print(seq)
