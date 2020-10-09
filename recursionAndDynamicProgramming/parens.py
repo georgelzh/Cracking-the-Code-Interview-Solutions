@@ -42,11 +42,13 @@ print(a)
 
 # approach 2
 def addParen(arr, leftRem, rightRem, stringArr, idx):
-    print("string arr", stringArr)
+    print("string arr", stringArr, "leftRem", leftRem, "rightRem", rightRem, "idx", idx)
     if leftRem < 0 or rightRem < leftRem:   # invalid
         return
     if leftRem == 0 and rightRem == 0:  # out of left and right parentheses
-        arr.append(''.join(stringArr))
+        elem = ''.join(stringArr)
+        print(elem)
+        arr.append(elem)
         
     else:
         stringArr[idx] = "("     # add left and recurse
@@ -74,24 +76,29 @@ print(a)
 
 
 """
-string arr ['*', '*']
-string arr ['(', '*']
-string arr ['(', '(']
-string arr ['(', ')']
-string arr [')', ')']
+for understanding purpose
+
+string arr ['*', '*'] leftRem 1 rightRem 1 idx 0
+string arr ['(', '*'] leftRem 0 rightRem 1 idx 1
+string arr ['(', '('] leftRem -1 rightRem 1 idx 2
+string arr ['(', ')'] leftRem 0 rightRem 0 idx 2
+()
+string arr [')', ')'] leftRem 1 rightRem 0 idx 1
 ['()']
-string arr ['*', '*', '*', '*']
-string arr ['(', '*', '*', '*']
-string arr ['(', '(', '*', '*']
-string arr ['(', '(', '(', '*']
-string arr ['(', '(', ')', '*']
-string arr ['(', '(', ')', '(']
-string arr ['(', '(', ')', ')']
-string arr ['(', ')', ')', ')']
-string arr ['(', ')', '(', ')']
-string arr ['(', ')', '(', '(']
-string arr ['(', ')', '(', ')']
-string arr ['(', ')', ')', ')']
-string arr [')', ')', ')', ')']
+string arr ['*', '*', '*', '*'] leftRem 2 rightRem 2 idx 0
+string arr ['(', '*', '*', '*'] leftRem 1 rightRem 2 idx 1
+string arr ['(', '(', '*', '*'] leftRem 0 rightRem 2 idx 2
+string arr ['(', '(', '(', '*'] leftRem -1 rightRem 2 idx 3
+string arr ['(', '(', ')', '*'] leftRem 0 rightRem 1 idx 3
+string arr ['(', '(', ')', '('] leftRem -1 rightRem 1 idx 4
+string arr ['(', '(', ')', ')'] leftRem 0 rightRem 0 idx 4
+(())
+string arr ['(', ')', ')', ')'] leftRem 1 rightRem 1 idx 2
+string arr ['(', ')', '(', ')'] leftRem 0 rightRem 1 idx 3
+string arr ['(', ')', '(', '('] leftRem -1 rightRem 1 idx 4
+string arr ['(', ')', '(', ')'] leftRem 0 rightRem 0 idx 4
+()()
+string arr ['(', ')', ')', ')'] leftRem 1 rightRem 0 idx 3
+string arr [')', ')', ')', ')'] leftRem 2 rightRem 1 idx 1
 ['(())', '()()']
 """
