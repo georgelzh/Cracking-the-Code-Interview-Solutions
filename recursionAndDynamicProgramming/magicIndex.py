@@ -1,7 +1,6 @@
 """
-Magic Index: A magic index in an array A [ 0 ••• n -1] is defined to be an index such that A[ i] =
-i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in
-array A.
+Magic Index: A magic index in an array A [ 0 ••• n -1] is defined to be an index such that A[ i] = i. 
+Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in array A.
 FOLLOW UP
 What if the values are not distinct?
 
@@ -10,6 +9,10 @@ What if the values are not distinct?
 [-2, -2, 2, 2, 2, 6, 6]
 
 Hints:#170, #204, #240, #286, #340
+watch man nee 
+
+book
+the spiritual man
 """
 
 # sorted array

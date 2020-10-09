@@ -28,11 +28,12 @@ class Tower:
 
     def moveDisks(self, n, dest, buffer):
         if n > 0:
-            self.moveDisks(n - 1, buffer, dest)
+            self.moveDisks(n - 1, buffer, dest) # pay attention here, we are moving all n-1 to buffer,
             self.moveTopTo(dest)
-            buffer.moveDisks(n - 1, dest, self)
+            buffer.moveDisks(n - 1, dest, self) # then we move from buffer back to destination.
+            
             # move n - 1 from buffer to dest. destination to buffer. 
-            # bc line 31 here we are using dest as buffer, and we
+            # bc line 31 here we are using dest as buffer, and we 
 
 def towersOfHanoi(n):
     towers = []
