@@ -17,16 +17,19 @@ def createStack(boxes, bottom, offset, cache):
     if offset >= len(boxes):
         return 0
 
-    newBottom = boxes[offset]
+    newBottom = boxes[offset]      # each time we make the offset as the newBottom
+    print("bottom {0}, newBottom {1}".format(bottom, newBottom))
+    
     heightWithBottom = 0
-    if bottom == None or canBeAbove(bottom, newBottom):
-        if offset not in cache:
-            cache[offset] = createStack(boxes, newBottom, offset + 1, cache)
-            cache[offset] += newBottom[0]
+    if bottom == None or canBeAbove(bottom, newBottom): # when we can put newBottom above previous box
+        if offset not in cache:     # and we have not tried this box before
+            cache[offset] = createStack(boxes, newBottom, offset + 1, cache) # try put this box and get the height of boxes we can put above it
+            cache[offset] += newBottom[0]   # add the height of current box
         heightWithBottom = cache[offset]
 
-    heightWithoutBottom = createStack(boxes, bottom, offset + 1, cache)
-    result = max(heightWithBottom, heightWithoutBottom)
+    heightWithoutBottom = createStack(boxes, bottom, offset + 1, cache) # check the height without current offset
+    result = max(heightWithBottom, heightWithoutBottom) # get max result
+    print("cache: {0}".format(cache))
     print(result)
     return result
 
