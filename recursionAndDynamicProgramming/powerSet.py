@@ -38,6 +38,7 @@ print(a)
 
 def getSubsets(arr):
     allSubsets = []
+    # this generates a number as 2^len(arr), because of the leftshift, operator.
     maxNum = 1 << len(arr)
     for k in range(maxNum):
         subset = convertIntToSet(k, arr)
@@ -49,6 +50,7 @@ def convertIntToSet(k, arr):
     index = 0
     while k > 0:
         print(subset)
+        # if the element the index is pointed to, is selected, and it's not in setset already.
         if k & 1 == 1 and arr[index] not in subset:
             subset.append(arr[index])
         index += 1
